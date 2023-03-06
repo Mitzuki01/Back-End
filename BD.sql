@@ -1,6 +1,8 @@
 create database constsolucion; #Confere o nome do banco na API que enviei e troca na moral
 use constsolucion;
 
+#drop database constsolucion;
+
 /*
 mudanças que fiz no banco:
 
@@ -10,13 +12,20 @@ criei, alterei e adicionei algumas tabelas/colunas
 não acho que a necessidade de haver algumas chaves estrageiras;
 */
 
+select * from tbl_usuario;
+
 create table tbl_usuario(
 	id_usuario		int primary Key auto_increment,
 	nome_usuario 	varchar(256) not null,
 	email 			varchar(256) not null,
-	senha			varchar(15) not null
+	senha			varchar(15) not null,
+    
+    cpf 			int(11) default 0,
+	telefone 		int(14) not null,
+    nascimento		date default '0000/00/00'
 );
 
+/*
 create table tbl_resolutor(
 	id_resolutor 	int primary key auto_increment,
 	email 			varchar(256) not null,
@@ -24,12 +33,13 @@ create table tbl_resolutor(
     
     cnpj 			int(14) not null,
 	cpf 			int(11) not null,
-	telefone 		int(14) null,
+	telefone 		int(14) not null,
     
 	e_id_usuario 	int,
 
 	constraint fk_id_usuario foreign key (e_id_usuario) references tbl_usuario(id_usuario) 
 );
+*/
 
 create table tbl_admin(
 	id_admin 	int primary key auto_increment,
