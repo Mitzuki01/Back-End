@@ -12,14 +12,14 @@ criei, alterei e adicionei algumas tabelas/colunas
 não acho que a necessidade de haver algumas chaves estrageiras;
 */
 
-select * from tbl_usuario;
+
 
 create table tbl_usuario(
 	id_usuario		int primary Key auto_increment,
-	nome_usuario 	varchar(256) not null,
-	email 			varchar(256) not null,
+	nome_usuario 	varchar(256) ,
+	email 			varchar(256) ,
 	senha			varchar(15) not null,
-	telefone 		int(14) not null,
+	telefone 		int(14),
     nascimento		date default '0000/00/00'
 );
 
@@ -72,3 +72,9 @@ create table tbl_imagem(
     
     constraint fk_id_denuncia foreign key(e_id_denuncia) references tbl_denuncia(id_denuncia)
 );
+
+
+
+
+
+select * from tbl_usuario;

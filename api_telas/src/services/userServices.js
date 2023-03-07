@@ -28,4 +28,4 @@ async function loginUser(email, senha){
   conn.end();
 }
 
-export default {createUser, updateUser};
+export default {createUser, updateUser , loginUser};
