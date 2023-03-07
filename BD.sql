@@ -19,8 +19,6 @@ create table tbl_usuario(
 	nome_usuario 	varchar(256) not null,
 	email 			varchar(256) not null,
 	senha			varchar(15) not null,
-    
-    cpf 			int(11) default 0,
 	telefone 		int(14) not null,
     nascimento		date default '0000/00/00'
 );
