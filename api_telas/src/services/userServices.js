@@ -22,9 +22,9 @@ async function updateUser(name, email, senha) {
 
 async function loginUser(email, senha){
   const sql = 'SELECT * FROM tbl_usuario WHERE email = ?, senha = ?'
-  const dados = [email,senha]
+  const user = [email,senha]
   const conn = await database.connect();
-  conn.query(sql, dados);
+  conn.query(sql, user);
   conn.end();
 }
 
