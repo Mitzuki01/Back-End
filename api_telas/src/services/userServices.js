@@ -10,13 +10,22 @@ async function createUser(nome, email, senha, telefone, nascimento) {
     conn.query(sql, dados);
     conn.end();
 }
-async function updateUser(name, email, password) { 
+async function updateUser(name, email, senha) { 
   const sql = 'UPDATE tbl_usuario SET nome = ?, email = ?, senha = ?, tipo_usuario = ? WHERE id_usuario = ? '; 
-  const dados = [name, email, password];
+  const dados = [name, email, senha];
   
   const conn = await database.connect();
   conn.query(sql, dados);
   conn.end(); 
+}
+
+
+async function loginUser(email, senha){
+  const sql = 'SELECT * FROM tbl_usuario WHERE email = ?, senha = ?'
+  const dados = [email,senha]
+  const conn = await database.connect();
+  conn.query(sql, dados);
+  conn.end();
 }
 
 export default {createUser, updateUser};
