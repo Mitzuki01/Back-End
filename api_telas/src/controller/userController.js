@@ -11,4 +11,10 @@ console.log(senha)
   response.status(200).send({message : 'Salvo com sucesso'})
 })
 
+router.post('/', async (resquest, response) => {
+  const {email,senha} = resquest.body;
+  await db.loginUser(email, senha),
+  response.status(200).send({message : 'login realizado com sucesso!'})
+})
+
 export default router
