@@ -17,19 +17,14 @@ async function updateUser(name, email, senha) {
 }
 
 
-async function loginUser(email,senha){
-  const sql = 'SELECT * FROM tbl_usuario WHERE email = ? AND senha = ?'
-  const user = [email,senha]
+async function loginUser(email,senha) {
+  const sql = 'SELECT * FROM tbl_usuario WHERE email = ? AND senha =?';
+  const dataLogin = [email, senha];
+  
   const conn = await database.connect();
-  conn.query(sql, user,
-    (result,error)=>{
-      if(error){
-        result.res.status(500).send('Erro interno do servidor');
-      } else if (result.length === 0) {
-        res.status(401).send('Credenciais inválidas');
-      }
-      }
-    );  
+  const [rows] = await conn.query(sql, dataLogin);
+  
+  return rows; //[0]
 }
 
 export default {createUser, updateUser , loginUser};

@@ -1,12 +1,12 @@
 import express from 'express'
-import db from '../services/userServices.js'
+import db from '../services/loginServices.js'
 
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-  const {email,senha} = resquest.body;
+  const {email,senha} = req.body;
   try{
-    const users = await db.login(email, senha);
+    const users = await db.loginUser(email, senha);
     if(users.length > 0){
       res.status(200).send({message : 'login realizado com sucesso!'});
     } else {
