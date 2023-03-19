@@ -1,4 +1,4 @@
-import database from '../../repository/connection.js';
+import database from '../repository/connection.js';
 
 async function login(email,senha) {
   const sql = 'SELECT * FROM tbl_usuario WHERE email = ? AND senha =?';
