@@ -12,10 +12,10 @@ async function duplicate(nome, email, senha) {
     return rows
 }
 
-async function createUser(nome, email, senha) { 
-    const sql = 'INSERT INTO tbl_usuario (nome, email, senha) VALUES(?, ?, ?)'; 
+async function createUser(nome, email, senha, telefone, nascimento) { 
+    const sql = 'INSERT INTO tbl_usuario (nome, email, senha, telefone, nascimento) VALUES(?, ?, ?, ?, ?)'; 
     
-    const dados = [nome, email, senha];
+    const dados = [nome, email, senha, telefone, nascimento];
 
     const conn = await database.connect();
     
