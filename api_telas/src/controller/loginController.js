@@ -3,20 +3,25 @@ import db from '../services/loginServices.js'
 
 const router = express.Router()
 
-router.post('/', async (req, res) => {
-  const {email,senha} = req.body;
-  try{
-    const users = await db.login(email, senha);
-    if(users.length > 0){
-      res.status(200).send({message : 'login realizado com sucesso!'});
-    } else {
-      res.status(401).send({message : 'dados inseridos incorretos!'});
-    }
-  } catch(err){
-    res.status(500).send({message : `Houve um erro no banco de dados. ${err}`})
-  }
-  
-});
+router.post('/', async (resquest, response) => {
+  const {email,senha} = resquest.body
+  await db.loginUser(email,senha)
 
+  try{
+    const userl = await db.loginUser(email, senha);
+
+    if(email === '' || senha === ''){
+      return(response.status(422).send('Campo em branco'))
+    }
+    if(userl.length > 0){
+      response.status(200).send('Login bem sucedido')
+    }
+    else{
+      response.status(404).send('Usuário não cadastrado')
+    }
+    }catch{
+      response.status(500).send('Error')
+    }
+})
 
 export default router

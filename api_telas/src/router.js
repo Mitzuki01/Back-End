@@ -1,13 +1,12 @@
 import express from 'express'
 
-import user from './controller/userController.js'
-import login from './controller/loginController.js'
-import senha from './controller/senhaController.js'
+import user from './controller/cadastroController.js'
+import userl from './controller/loginController.js'
 
 const router = express()
 
 router.use('/user', user)
-router.use('/login', login)
-router.use('/reset', senha)
+
+router.use('/login',userl)
 
 export default router

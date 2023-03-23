@@ -1,13 +1,14 @@
 import database from '../repository/connection.js';
 
-async function login(email,senha) {
-  const sql = 'SELECT * FROM tbl_usuario WHERE email = ? AND senha =?';
-  const dataLogin = [email, senha];
-  
+async function loginUser(email, senha){
+  const sql2 = "SELECT * FROM tbl_usuario WHERE email = ? AND senha=?"
+  const dados2 = [email, senha]
+
   const conn = await database.connect();
-  const [rows] = await conn.query(sql, dataLogin);
-  
-  return rows; //[0]
+  const [rows] = await conn.query(sql2, dados2)
+  conn.end();
+
+  return rows
 }
 
-export default {login}
+export default {loginUser};
