@@ -1,8 +1,9 @@
 import database from '../repository/connection.js'
 
-async function checkEmail(email,telefone){
-  const sql = "SELECT * FROM tbl_usuario WHERE email = ? and telefone = ?";
-  const dadosVeri = [email, telefone] 
+
+async function checkEmail(email){
+  const sql = "SELECT * FROM tbl_usuario WHERE email = ?";
+  const dadosVeri = [email] 
 
   const conn = await database.connect();
   const [rows] = await conn.query(sql, dadosVeri);
@@ -11,9 +12,9 @@ async function checkEmail(email,telefone){
   return rows;
 }
 
-async function changePassword(email, telefone, newPassword){
-  const sql = "UPADATE tbl_usario SET senha = ? WHERE email = ? and telefone = ?";
-  const dataNewPass = [newPassword, email, telefone];
+async function changePassword(email, newPassword){
+  const sql = "UPADATE tbl_usario SET senha = ? WHERE email = ?";
+  const dataNewPass = [newPassword, email];
 
   const conn = await database.connect();
   await conn.query(sql, dataNewPass);
