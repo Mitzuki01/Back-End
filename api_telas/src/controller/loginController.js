@@ -1,16 +1,18 @@
 import express from 'express'
+import md5 from 'md5'
 import db from '../services/loginServices.js'
 
 const router = express.Router()
 
 router.post('/', async (resquest, response) => {
   const {email,senha} = resquest.body
-  await db.loginUser(email,senha)
+  const hash = md5(senha);
+  await db.loginUser(email,hash)
 
   try{
-    const userl = await db.loginUser(email, senha);
+    const userl = await db.loginUser(email, hash);
 
-    if(email === '' || senha === ''){
+    if(email === '' || hash === ''){
       return(response.status(422).send('Campo em branco'))
     }
     if(userl.length > 0){
