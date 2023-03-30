@@ -6,13 +6,13 @@ const router = express.Router()
 
 router.post('/', async (resquest, response) => {
   const {email,senha} = resquest.body
-  const hash = md5(senha);
-  await db.loginUser(email,hash)
+  //const hash = md5(senha);
+  await db.loginUser(email,senha)
 
   try{
-    const userl = await db.loginUser(email, hash);
+    const userl = await db.loginUser(email, senha);
 
-    if(email === '' || hash === ''){
+    if(email === '' || senha === ''){
       return(response.status(422).send('Campo em branco'))
     }
     if(userl.length > 0){
