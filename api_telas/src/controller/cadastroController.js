@@ -8,7 +8,7 @@ router.post('/', async (request, response) => {
   const {nome_usuario, email, senha, telefone, nascimentoP} = request.body
   //const hash = md5(senha);
 
-  await db.duplicate(email,hash)
+  await db.duplicate(email,senha)
 
   try{    
     const userd = await db.duplicate(nome_usuario, email, senha)
