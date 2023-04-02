@@ -1,20 +1,22 @@
 import express from 'express'
 import db from '../services/checkService.js'
 import { generatePassword } from '../helper/recuperarPassword.js'
-const nodemailer = require('nodemailer')
+import nodemailer from "nodemailer"
 
 const router = express.Router()
 
-router.post('/reset', async(req, res)=>{
+router.post('/', async(req, res)=>{
 
-  const {email} = req.body;
+  const {emailF} = req.body;
+
+  console.log('email senha controller >>>',emailF)
 
   try{
-    const user = await db.checkEmail(email);
+    const user = await db.checkEmail(emailF);
     
     if(user.length > 0){
       const newPassword = generatePassword();
-      await db.changePassword(email, newPassword);
+      await db.changePassword(emailF, newPassword);
 
       const email = async () => {
         let trasnporte = nodemailer.createTransport({
@@ -32,7 +34,7 @@ router.post('/reset', async(req, res)=>{
     
         await trasnporte.sendMail({
             from: 'Reportando <contatandosolucoes@gmail.com>', 
-            to: `${email}`, 
+            to: `${emailF}`, 
             subject: 'Redefinição de senha realizada.', 
             html: `<h1>Sua senha foi alterada</h1><br><p>Sua nova senha é: ${newPassword}</p>`, 
             text: `Sua senha foi alterada, Sua nova senha é: ${newPassword}` 
@@ -49,13 +51,10 @@ router.post('/reset', async(req, res)=>{
     }
 
   }catch(err){
-    res.status(500).send({messsage: `Houve um erro no banco de dados. ${err}`})
+    // res.status(500).send({messsage: `Houve um erro no banco de dados. ${err}`})
+    res.status(500).send(console.log(err))
   }
 
 });
-
-router.get('/reset', async(req, res)=>{
-  
-})
 
 export default router
