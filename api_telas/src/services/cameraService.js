@@ -1,7 +1,7 @@
 import db from '../repository/connection.js';
 
 async function setPhoto(capturedPhoto) { 
-    const sql = 'INSERT INTO tbl_usuario (imagem) VALUES(?)'; 
+    const sql = 'INSERT INTO tbl_imagem (imagem) VALUES(?)'; 
     
     const dados = [capturedPhoto];
 
