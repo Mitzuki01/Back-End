@@ -11,6 +11,19 @@ async function checkEmail(email){
   return rows;
 }
 
+async function checkCodigo(email, codigo){
+  const sql = "SELECT * FROM tbl_usuario WHERE email = ? and senha = ?";
+
+  const conn = await database.connect();
+
+  const dados = [email, codigo]
+
+  const [rows] = await conn.query(sql, dados);
+
+  conn.end();
+  return rows;
+} 
+
 async function changePassword(email, newPassword){
   const sql = "UPDATE tbl_usuario SET senha = ? WHERE email = ?";
   const dataNewPass = [newPassword, email];
@@ -21,4 +34,4 @@ async function changePassword(email, newPassword){
 
 }
 
-export default {checkEmail, changePassword}
+export default {checkEmail, changePassword, checkCodigo}
