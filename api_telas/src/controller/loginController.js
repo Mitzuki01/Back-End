@@ -9,7 +9,6 @@ router.post('/', async (resquest, response) => {
   const {email,senha} = resquest.body
   const hash = md5(senha);
   const secret = 'Etecembu@123'
-  await db.loginUser(email,hash)
 
   try{
     const userl = await db.loginUser(email, hash);
