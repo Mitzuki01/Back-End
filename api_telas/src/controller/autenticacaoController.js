@@ -1,4 +1,5 @@
 import express from 'express'
+import md5 from 'md5'
 import db from '../services/checkService.js'
 
 const router = express.Router()
@@ -11,8 +12,8 @@ router.post('/', async(req, res)=>{
       const user = await db.checkCodigo(email, codigo);
       
       if(user.length > 0){
-
-        await db.changePassword(email, senha);
+        const hash = md5(senha);
+        await db.changePassword(email, hash);
 
         res.status(200).send('Senha atualizada')
   
