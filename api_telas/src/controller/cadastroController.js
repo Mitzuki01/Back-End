@@ -5,7 +5,7 @@ import db from '../services/cadastroServices.js'
 const router = express.Router()
 
 router.post('/', async (request, response) => {
-  const {nome_usuario, email, senha, telefone, nascimentoP} = request.body
+  const {nome_usuario, email, senha, telefone, nascimento} = request.body
   const hash = md5(senha);
 
   await db.duplicate(email,hash)
@@ -20,7 +20,7 @@ router.post('/', async (request, response) => {
       response.status(409).send("Usuario já cadastrado")
     }
     else{
-      await db.createUser(nome_usuario, email ,hash, telefone, nascimentoP)
+      await db.createUser(nome_usuario, email ,hash, telefone, nascimento)
       response.status(200).send("Cadastro realizado")
     }
     }catch{
