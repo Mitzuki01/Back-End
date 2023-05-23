@@ -8,7 +8,7 @@ import update from './controller/autenticacaoController.js'
 import denuncia from './controller/denunciaController.js'
 import imgView  from './controller/imgViewController.js'
 import getD  from './controller/getD.js'
-
+import formsResolutor from './controller/formResolutor.js'
 
 const router = express()
 
@@ -27,5 +27,7 @@ router.use('/update', update)
 router.use('/imgView', imgView )
 
 router.use('/getD', getD )
+
+router.use('/resolutor', formsResolutor)
 
 export default router
