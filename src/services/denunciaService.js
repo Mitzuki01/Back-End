@@ -10,5 +10,16 @@ async function setDenuncia(imageUri,tipo_problema,desc_problema,longitude,latitu
     conn.query(sql, dados);
     conn.end();
 }
+// ---------------------------------------------------
+async function dadosDenuncia(){
+    const sql = 'select * from tbl_denuncia where id_denuncia =  (select max(id_denuncia) from tbl_denuncia) ;'
 
-export default {setDenuncia};
+    const conn = await db.connect()
+
+    const [rows] = conn.query(sql)
+    conn.end()
+
+    return rows
+}
+
+export default {setDenuncia, dadosDenuncia};
