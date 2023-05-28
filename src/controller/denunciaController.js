@@ -12,10 +12,7 @@ router.post('/', async (request, response) => {
         await db.setDenuncia(imageUri,tipo_problema,desc_problema,longitude,latitude)
 
         // sistema para enviar email pra resolutor
-
-        const denuncia = db.dadosDenuncia()
-
-        console.log('formulario denuncia >>> ',denuncia)
+        // ver como pegar a imagem, email de resolução e filtro
 
         const email = async () => {
             let trasnporte = nodemailer.createTransport({
@@ -31,14 +28,24 @@ router.post('/', async (request, response) => {
                   }
             })
 
-            const denuncia = db.dadosDenuncia() // ver com o professro oque é promise 
+            const denuncia = db.dadosDenuncia()
 
             await trasnporte.sendMail({
                 from: 'Reportando <contatandosolucoes@gmail.com>', 
                 to: `andrey.justino@etec.sp.gov.br`, 
                 subject: 'Uma nova denuncia foi encontrada.', 
-                html: `<h1>Nova denuncia feita</h1><br><p>Os dados são: ${denuncia}</p>`, 
-                text: `Sua senha foi alterada, Sua nova senha é: ${denuncia}` 
+                html: `<h1>Nova denuncia feita</h1>
+                <p>Os dados são:</p>
+                <ul>
+                  <li>ID da denuncia: ${denuncia[0].id_denuncia}</li>
+                  <li>Quantidade de denuncia: ${denuncia[0].qnt_denuncia}</li>
+                  <li>Tipo de problema: ${denuncia[0].tipo_problema}</li>
+                  <li>Descrição: ${denuncia[0].desc_problema}</li>
+                  <li>Latitude: ${denuncia[0].latitude}</li>
+                  <li>Longitude: ${denuncia[0].longitude}</li>
+                  <li>CEP: ${denuncia[0].fk_cep}</li>
+                </ul>`, 
+                text: `Nova denuncia encontrada dados: ${denuncia}` 
             })
 
             .then(() => console.log("E-mail enviado com sucesso."))

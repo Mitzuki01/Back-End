@@ -27,6 +27,7 @@ router.post('/', async (resquest, response) => {
 
 })
 
+// tabela
 router.get('/', async (resquest, response) => {
     try{
         const results = await db.denuncia()
