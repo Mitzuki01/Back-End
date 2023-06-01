@@ -16,9 +16,9 @@ async function dadosDenuncia(){
 
     const conn = await db.connect()
 
-    const [rows] = conn.query(sql)
+    const [rows] = await conn.query(sql)
     conn.end()
-
+    
     return rows
 }
 

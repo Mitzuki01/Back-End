@@ -28,8 +28,6 @@ router.post('/', async (request, response) => {
                   }
             })
 
-            const denuncia = db.dadosDenuncia()
-
             await trasnporte.sendMail({
                 from: 'Reportando <contatandosolucoes@gmail.com>', 
                 to: `andrey.justino@etec.sp.gov.br`, 
@@ -37,15 +35,12 @@ router.post('/', async (request, response) => {
                 html: `<h1>Nova denuncia feita</h1>
                 <p>Os dados são:</p>
                 <ul>
-                  <li>ID da denuncia: ${denuncia[0].id_denuncia}</li>
-                  <li>Quantidade de denuncia: ${denuncia[0].qnt_denuncia}</li>
-                  <li>Tipo de problema: ${denuncia[0].tipo_problema}</li>
-                  <li>Descrição: ${denuncia[0].desc_problema}</li>
-                  <li>Latitude: ${denuncia[0].latitude}</li>
-                  <li>Longitude: ${denuncia[0].longitude}</li>
-                  <li>CEP: ${denuncia[0].fk_cep}</li>
-                </ul>`, 
-                text: `Nova denuncia encontrada dados: ${denuncia}` 
+                  <li>Tipo de problema: ${tipo_problema}</li>
+                  <li>Descrição: ${desc_problema}</li>
+                  <li>Latitude: ${latitude}</li>
+                  <li>Longitude: ${longitude}</li>
+                  <li>CEP: teste </li>
+                </ul>` 
             })
 
             .then(() => console.log("E-mail enviado com sucesso."))
