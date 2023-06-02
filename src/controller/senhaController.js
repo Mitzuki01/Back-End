@@ -35,9 +35,9 @@ router.post('/', async(req, res)=>{
         await trasnporte.sendMail({
             from: 'Reportando <contatandosolucoes@gmail.com>', 
             to: `${emailF}`, 
-            subject: 'Redefinição de senha realizada.', 
-            html: `<h1>Sua senha foi alterada</h1><br><p>Sua nova senha é: ${newPassword}</p>`, 
-            text: `Sua senha foi alterada, Sua nova senha é: ${newPassword}` 
+            subject: 'Pedido de nova senha realizado.', 
+            html: `<h1>Digite no campo adequado o código e insira a nova senha</h1><br><p>Seu código é: ${newPassword}</p>`, 
+            text: `Sua senha foi alterada, Seu código é: ${newPassword}` 
         })
     
         .then(() => console.log("E-mail enviado com sucesso."))
