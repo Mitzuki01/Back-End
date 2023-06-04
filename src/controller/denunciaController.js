@@ -14,7 +14,7 @@ router.post('/', async (request, response) => {
         await db.setDenuncia(imageUri,tipo_problema,desc_problema,longitude,latitude)
 
         // sistema para enviar email pra resolutor
-        // ver como pegar a imagem, email de resolução e filtro
+        // ver como pegar a imagem
 
         let config = {
             method: 'get',

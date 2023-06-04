@@ -7,7 +7,7 @@ async function setDenuncia(imageUri,tipo_problema,desc_problema,longitude,latitu
 
     const conn = await db.connect();
     
-    conn.query(sql, dados);
+    conn.query(sql, dados); 
     conn.end();
 }
 // ---------------------------------------------------
