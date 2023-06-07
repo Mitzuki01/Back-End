@@ -8,10 +8,10 @@ import axios from 'axios'
 const router = express.Router()
 
 router.post('/', async (request, response) => {
-  const {imageUri,tipo_problema,desc_problema,longitude,latitude} = request.body
+  const {url,tipo_problema,desc_problema,longitude,latitude} = request.body
 
   try{    
-        await db.setDenuncia(imageUri,tipo_problema,desc_problema,longitude,latitude)
+        await db.setDenuncia(url,tipo_problema,desc_problema,longitude,latitude)
 
         // sistema para enviar email pra resolutor
         // ver como pegar a imagem
