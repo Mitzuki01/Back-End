@@ -5,21 +5,16 @@ import nodemailer from "nodemailer"
 
 import axios from 'axios'
 
-import jwt from 'jsonwebtoken'
-
 const router = express.Router()
 
 router.post('/', async (request, response) => {
   const {url,tipo_problema,desc_problema,longitude,latitude} = request.body
-  const secret = 'denuncia@123'
 
   try{    
         await db.setDenuncia(url,tipo_problema,desc_problema,longitude,latitude)
 
         // sistema para enviar email pra resolutor
         // ver como pegar a imagem
-
-        const token = jwt.sign({tipo_problema: tipo_problema, desc_problema: desc_problema, latitude: latitude, longitude: longitude}, secret)
 
         let config = {
             method: 'get',
@@ -109,7 +104,7 @@ router.post('/', async (request, response) => {
 
         }
 
-        response.status(200).send(email()).send({token:token})
+        response.status(200).send(email())
         console.log('Email de denuncia enviado com sucesso!')
     }
     catch(error){
