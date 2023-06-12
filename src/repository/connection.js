@@ -12,6 +12,6 @@ export default {connect};
 //     user : 'root',
 //     host : 'localhost',
 //     port : 3306,
-//     password : 'Pai260775',
+//     password : '',
 //     database : 'constsolucion'
 //   }
