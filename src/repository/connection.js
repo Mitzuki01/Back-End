@@ -1,7 +1,7 @@
 import mysql2 from 'mysql2/promise';
 
 async function connect() {
-    const connection = await mysql2.createConnection('mysql://hrwz213l6zvd7kbpv9zf:pscale_pw_Yf8lbL3n4tuV0m1BHyu7GltwBlRelSOv4z2e6d6QTdr@aws.connect.psdb.cloud/reportando?ssl={"rejectUnauthorized":true}'
+    const connection = await mysql2.createConnection('mysql://dm8t9ikvgaivxeq9qt43:pscale_pw_tuj3249nYr1kJuFZPW7WegUot40r00O5kbpXPx2tFMr@aws.connect.psdb.cloud/reportando?ssl={"rejectUnauthorized":true}'
 )
 
     return connection;
