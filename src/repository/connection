@@ -3,8 +3,8 @@ import mysql2 from 'mysql2/promise';
 
 async function connect() {
     const connection = await mysql2.createConnection({
-        user : 'id20758381_root',
-        host : 'localhost',
+        user : 'subsolar-arm',
+        host : 'files.000webhost.com',
         port : '21',
         password: 'Etecembu@123',
         database : 'id20758381_constsolucion'
