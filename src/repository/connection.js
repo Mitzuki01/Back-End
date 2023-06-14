@@ -3,10 +3,10 @@ import mysql2 from 'mysql2/promise';
 
 async function connect() {
     const connection = await mysql2.createConnection({
-        user : 'j8f2a2zsrgahfjszz98z',
+        user : '46a8p6go1uildklzm20a',
         host : 'aws.connect.psdb.cloud',
         //port : '7052',
-        password: 'pscale_pw_Dvdds31LtU2JDkTo6bBIRPjhZwJYki6CWbd3Rg51RCq',
+        password: 'pscale_pw_Or8kVRnLDHEUgNqi90maHhAd4Gf067MVn5VDxEVnl1B',
         database : 'reportando'
     })
 
