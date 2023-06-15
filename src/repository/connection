@@ -2,7 +2,13 @@ import mysql2 from 'mysql2/promise';
 
 
 async function connect() {
-    const connection = await mysql2.createConnection('mysql://root:958aCvCF95MvDSJp9YGW@containers-us-west-53.railway.app:5993/railway')
+    const connection = await mysql2.createConnection({
+       user : 'root',
+       host : 'containers-us-west-53.railway.app',
+       port : 5993,
+       password : 'WCgOVyfz617Y1WYpbmXs',
+       database : 'railway'
+    })
 
     return connection;
 };
