@@ -6,7 +6,8 @@ async function connect() {
        user : 'nxmz0422wsgtu0poo4in',
        host : 'aws.connect.psdb.cloud',
        password : 'pscale_pw_bjKSxzLQIm6yEPNwWsdfybKaMJz0HGU9T7V1PCjC6B7',
-       database : 'relatando'
+       database : 'relatando',
+       ssl:{rejectUnauthorized: false}
     })
 
     return connection;
