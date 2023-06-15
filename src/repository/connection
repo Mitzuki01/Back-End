@@ -5,7 +5,6 @@ async function connect() {
     const connection = await mysql2.createConnection({
        user : 'nxmz0422wsgtu0poo4in',
        host : 'aws.connect.psdb.cloud',
-       port : 5891,
        password : 'pscale_pw_AOGG9iHqIKXuUXcDI9h170TU7waUCMzEOAU3ZYLDtZx',
        database : 'relatando'
     })
