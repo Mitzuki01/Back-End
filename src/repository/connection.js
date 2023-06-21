@@ -3,19 +3,18 @@ import mysql2 from 'mysql2/promise';
 
 async function connect() {
     const connection = await mysql2.createConnection({ 
-            database: 'id20758368_reportando',
-            user: 'id20758368_root',
-            host: 'localhost',
-            password: 'Etecembu@123',
-            ssl : {
-               rejectUnauthorized:false,
-             }
+            database: 'sql9627614',
+            user: 'sql9627614',
+            port : 3306,
+            host: 'sql9.freemysqlhosting.net',
+            password: 'BnpYUshZF6'
            })
 
     return connection;
 };
 
 export default {connect};
+
 
 // { 
 //     user : 'root',
